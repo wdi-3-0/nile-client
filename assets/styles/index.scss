@@ -6,6 +6,7 @@
 
 .navbar {
   height: 50px;
+
   > .nav-item {
     height: 100%;
     width: 30%;
@@ -14,8 +15,8 @@
 
 .product {
   background: grey;
-  margin: 15px auto;
   height: 300px;
+  margin: 15px auto;
   width: 300px;
 }
 
