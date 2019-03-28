@@ -1,0 +1,45 @@
+
+
+.product-wrapper {
+  margin: 15px auto;
+
+}
+
+.product {
+  border: thin outset gray;
+  border-radius: 3px;
+  margin: 0 auto;
+  max-width: 350px;
+
+  .thumbnail {
+
+    margin: 0 auto;
+  }
+
+  .caption {
+    margin: 2px auto;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: cursive;
+    background-color: #666;
+    border-radius: 3px;
+    color: #fff;
+    text-align: center;
+  }
+
+  .price {
+    font-size: 14px;
+    font-weight: 400;
+    color: #000;
+    text-align: right;
+    .item-price::before {
+      content: '$';
+    }
+  }
+
+  .no-auth {
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+  }
+}
