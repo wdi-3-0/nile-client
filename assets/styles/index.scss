@@ -1,1 +1,26 @@
 @import '~bootstrap/scss/bootstrap';
+
+.main {
+  margin-top: 30px;
+}
+
+.navbar {
+  height: 50px;
+
+  > .nav-item {
+    height: 100%;
+    width: 30%;
+  }
+}
+
+.product {
+  background: grey;
+  height: 300px;
+  margin: 15px auto;
+  width: 300px;
+}
+
+#nav-dropdown {
+  height: 100%;
+  width: 100%;
+}
