@@ -6,7 +6,7 @@
 
 .navbar {
   height: 50px;
-  > button {
+  > .nav-item {
     height: 100%;
     width: 30%;
   }
@@ -17,4 +17,9 @@
   margin: 15px auto;
   height: 300px;
   width: 300px;
+}
+
+#nav-dropdown {
+  height: 100%;
+  width: 100%;
 }
