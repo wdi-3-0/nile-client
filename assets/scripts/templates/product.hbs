@@ -1,5 +1,6 @@
 {{#each products as |product| }}
-  <div class="product col-6" data-id="{{product.id}}">
+<div class="product-wrapper">
+  <div class="product col-6 col-lg-3" data-id="{{product._id}}">
     <div class="thumbnail">
       <img src="{{product.imageUrl}}" alt="{{product.name}}">
     </div>
@@ -11,7 +12,7 @@
     </div>
   {{#if token}}
     <div class="add-item">
-      <button class="btn btn-default">Add to Cart</button>
+      <button id="btnAddItem" class="btn btn-default">Add to Cart</button>
     </div>
   {{else}}
     <div class="no-auth">
@@ -19,4 +20,5 @@
     </div>
   {{/if}}
   </div>
+</div>
 {{/each}}
