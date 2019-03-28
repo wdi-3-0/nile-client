@@ -100,5 +100,7 @@ jspm_packages
 # Yarn Integrity file
 .yarn-integrity
 
+# Package Lock file
+package-lock.json
 
 # End of https://www.gitignore.io/api/node
