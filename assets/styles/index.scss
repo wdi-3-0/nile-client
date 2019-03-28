@@ -1,1 +1,20 @@
 @import '~bootstrap/scss/bootstrap';
+
+.main {
+  margin-top: 30px;
+}
+
+.navbar {
+  height: 50px;
+  > button {
+    height: 100%;
+    width: 30%;
+  }
+}
+
+.product {
+  background: grey;
+  margin: 15px auto;
+  height: 300px;
+  width: 300px;
+}
