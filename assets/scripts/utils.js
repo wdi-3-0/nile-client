@@ -1,5 +1,7 @@
 'use strict'
 // Common utility functions
+//
+// Currently utilize Bootstrap Alert styles
 
 const store = require('./store')
 
