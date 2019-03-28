@@ -1,0 +1,22 @@
+{{#each products as |product| }}
+  <div class="product col-6" data-id="{{product.id}}">
+    <div class="thumbnail">
+      <img src="{{product.imageUrl}}" alt="{{product.name}}">
+    </div>
+    <div class="caption">
+      <h3>{{product.name}}</h3>
+    </div>
+    <div class="price">
+      <span class="item-price">{{product.price}}</span>
+    </div>
+  {{#if token}}
+    <div class="add-item">
+      <button class="btn btn-default">Add to Cart</button>
+    </div>
+  {{else}}
+    <div class="no-auth">
+      <span class="message">Sign in to purchase</span>
+    </div>
+  {{/if}}
+  </div>
+{{/each}}
