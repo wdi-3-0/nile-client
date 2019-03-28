@@ -24,7 +24,8 @@
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
               <button id="nav-sign-in-button" class="dropdown-item" type="button" data-toggle="modal" data-target="#sign-in-modal">Sign In</button>
               <button id="nav-sign-up-button" class="dropdown-item" type="button" data-toggle="modal" data-target="#sign-up-modal">Sign Up</button>
-              <button id="nav-change-password-button" class="dropdown-item" type="button">Change Password</button>
+              <button id="nav-change-password-button" class="dropdown-item" type="button" data-toggle="modal" data-target="#change-password-modal">Change Password</button>
+              <button id="nav-sign-out-button" class="dropdown-item" type="button">Sign Out</button>
               <button id="nav-cart-button" class="dropdown-item" type="button">Cart</button>
             </div>
           <!-- Dropdown Menu end -->
@@ -94,6 +95,35 @@
         </div>
       </div>
     <!-- Sign-up Modal End -->
+
+    <!-- Change Password Modal Begin -->
+      <div class="modal fade" id="change-password-modal" tabindex="-1" role="dialog" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Change Password</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="change-password-form" class="form-group">
+                    <div class="form-group">
+                      <label for="oldPassword">Old Password</label>
+                      <input type="password" name="passwords[old]" class="form-control" placeholder="Enter old password" id="oldPassword">
+                    </div>
+                    <div class="form-group">
+                      <label for="newPassword">New Password</label>
+                      <input type="password" name="passwords[new]" class="form-control" placeholder="Enter new password" id="newPassword">
+                  </div>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button id="change-password-button" type="submit" class="btn btn-primary">Change Password</button>
+              </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- Change Password Modal End -->
 
     <!-- Testing Content Begin-->
       <section class="main">
