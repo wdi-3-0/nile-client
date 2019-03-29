@@ -15,7 +15,7 @@ const signInSuccess = (responseData) => {
 const authFailure = () => {
   hideModal()
   authRefresh()
-  toast.failure('Unable to log in')
+  toast.failure('Unable to log in, please check credentials and try again.')
 }
 
 // Reset form fields, and hide modal.
