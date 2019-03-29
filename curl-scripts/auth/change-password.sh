@@ -1,4 +1,4 @@
-curl "http://localhost:4741" \
+curl "http://localhost:4741/change-password" \
   --include \
   --request PATCH \
   --header "Authorization: Token token=${TOKEN}" \
