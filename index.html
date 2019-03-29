@@ -36,6 +36,20 @@
       </nav>
     <!-- Nav End -->
 
+    <!-- Stripe Button Start -->
+    <form action="console.log('hi')" method="POST">
+      <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="pk_test_dgZw9KnZI7jvEWnUZNBd3uyb00pcbgfzpM"
+        data-amount="999"
+        data-name="Demo Site"
+        data-description="Example charge"
+        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+        data-locale="auto">
+      </script>
+    </form>
+    <!-- Stripe Button End -->
+
   <!-- Sign-in Modal Begin -->
     <div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
