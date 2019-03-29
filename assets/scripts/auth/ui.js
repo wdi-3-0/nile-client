@@ -34,9 +34,10 @@ const changePasswordFailure = () => {
 
 // Reset form fields upon sign out. Then hide signed-in auth events.
 const signOutSuccess = () => {
+  store.user = null
   hideModal()
   // Display success message, unhide unsecured items and hide secured items.
-  toast.success('Thanks for visiting ' + store.user.email + ', you have successfully been signed out.')
+  toast.success('You have successfully been signed out.')
   authRefresh()
 }
 
@@ -44,8 +45,7 @@ const signOutSuccess = () => {
 const signOutFailure = () => {
   // toast.failure('There seems to have been a problem signing out. Please try again.')
   // just delete the token and tell them they were signed out successfully
-  store.user = null
-  signOutSuccess()
+  toast.failure(store.user.email + ', there was a problem signing out, please try again.')
 }
 
 const authRefresh = () => {
