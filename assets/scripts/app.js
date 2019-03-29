@@ -5,13 +5,14 @@
 
 // use require without a reference to ensure a file is bundled
 // require('./example')
-const authEvents = require('./auth/events.js')
-
+const authEvents = require('./auth/events')
+const purchEvents = require('./purchases/events')
 const products = require('./products')
 
 $(() => {
-  products.loadProducts()
   authEvents.addHandlers()
+  purchEvents.addHandlers()
+  products.loadProducts()
 
   // Set sign-in only features as hidden on page load.
   $('.secured').hide()
