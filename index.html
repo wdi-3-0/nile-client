@@ -28,6 +28,7 @@
               <button id="nav-sign-up-button" class="dropdown-item unsecured" type="button" data-toggle="modal" data-target="#sign-up-modal">Sign Up</button>
               <button id="nav-change-password-button" class="dropdown-item secured" type="button" data-toggle="modal" data-target="#change-password-modal">Change Password</button>
               <div class="dropdown-divider secured"></div>
+              <button id="nav-orders-button" class="dropdown-item secured" type="button" data-toggle="modal" data-target="#orders-modal">Orders</button>
               <button id="nav-cart-button" class="dropdown-item secured" type="button">Cart</button>
               <button id="nav-sign-out-button" class="dropdown-item secured" type="button">Sign Out</button>
             </div>
@@ -150,10 +151,28 @@
             </div>
           </div>
         </div>
-
-
-
       <!-- end Shopping Cart -->
+
+      <!-- Orders Modal Begin -->
+      <div class="modal fade" id="orders-modal" tabindex="-1" role="dialog" aria-labelledby="ordersModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Orders</h4>
+                <button type="button" class="close close-clear" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <div id="order-content" class="order-content">
+                    <!-- Past order content goes here -->
+                  </div>
+                  <button type="button" class="btn btn-secondary close-clear" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- Orders Modal End -->
 
       <main class="main">
 
