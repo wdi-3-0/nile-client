@@ -6,6 +6,7 @@ const ui = require('./ui')
 const addHandlers = () => {
   $('#nav-cart-button').on('click', showCart)
   $('.main').on('click', '.add-item button', addToCart)
+  $('#shopping-cart-modal').on('click', '.remove-item', removeFromCart)
 }
 
 const showCart = () => {
@@ -17,12 +18,21 @@ const showCart = () => {
 const addToCart = (event) => {
   const productId = $(event.target).data('id')
   api.addItem(productId)
-    .then()
-    .catch()
+    .then(ui.addItemSuccess)
+    .catch(ui.addItemFailure)
+}
+
+const removeFromCart = (event) => {
+  event.preventDefault()
+  const productId = $(event.target).data('id')
+  api.removeItem(productId)
+    .then(ui.removeItemSuccess)
+    .catch(ui.removeItemFailure)
 }
 
 module.exports = {
   addHandlers,
   showCart,
-  addToCart
+  addToCart,
+  removeFromCart
 }

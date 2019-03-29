@@ -2,4 +2,26 @@
 
 .shopping-cart {
   border: thin solid gray;
+
+  .item {
+    display: flex;
+
+    .product-name {
+      font-family: serif;
+    }
+    .item-cost {
+      text-align: right;
+    }
+    .item-cost::before {
+      content: '$';
+    }
+
+    button {
+
+    }
+  }
+
+  .total-cost::before {
+    content: '$';
+  }
 }
