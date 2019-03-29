@@ -1,12 +1,12 @@
-<div class="shopping-cart require-token">
+<div class="shopping-cart secured">
   <header>Shopping Cart</header>
 
   {{#if cart.items}}
       <h3>Current Items</h3>
     {{#each cart.items as |item|}}
       <div class="item">
-        <div class="product" data-id="{{item.product._id}}">{{item.product.name}}</div>
-        <div class="item-cost">{{item.product.price}}</div>
+        <div class="product" data-id="{{item._id}}">{{item.name}}</div>
+        <div class="item-cost">{{item.price}}</div>
         <button class="btn btn-default remove-item">Remove</button>
       </div>
     {{/each}}
@@ -17,7 +17,7 @@
 
 </div>
 
-<div class="no-token">
+<div class="unsecured">
   <span class="message">You must be signed in to shop.</span>
   <button class="sign-in-button btn btn-primary">Sign In</button>
 </div>
