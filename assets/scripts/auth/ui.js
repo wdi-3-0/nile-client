@@ -8,8 +8,10 @@ const signInSuccess = (responseData) => {
   $(`form`).trigger(`reset`)
   $('#sign-in-modal').modal('hide')
   $('#sign-up-modal').modal('hide')
-  // Display success message.
+  // Display success message, unhide secured items and hide unsecured items.
   toast.success('Sign in successful. Welcome to Nile, ' + store.user.email)
+  $('.unsecured').hide()
+  $('.secured').show()
 }
 
 // Used for both sign up and sign in failure. display message, then reset form fields.
@@ -37,8 +39,10 @@ const changePasswordFailure = () => {
 // Reset form fields upon sign out. Then hide signed-in auth events.
 const signOutSuccess = () => {
   $(`form`).trigger(`reset`)
-  // Display success message.
+  // Display success message, unhide unsecured items and hide secured items.
   toast.success('Thanks for visiting ' + store.user.email + ', you have successfully been signed out.')
+  $('.unsecured').show()
+  $('.secured').hide()
 }
 
 // Display failure message.
