@@ -5,9 +5,20 @@
 
 // use require without a reference to ensure a file is bundled
 // require('./example')
+const authEvents = require('./auth/events.js')
 
 const products = require('./products')
 
 $(() => {
   products.loadProducts()
+  authEvents.addHandlers()
+
+  // Set sign-in only features as hidden on page load.
+  $('.secured').hide()
+
+  // Clear form fields when exiting change password modal without submit.
+  $('.close-clear').on('click', (event) => {
+    event.preventDefault()
+    $(`form`).trigger(`reset`)
+  })
 })
