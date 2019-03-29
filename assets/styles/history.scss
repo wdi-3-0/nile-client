@@ -1,0 +1,27 @@
+
+.purchase-history {
+  border: thin inset gray;
+  border-radius: 3px;
+
+  .order {
+    border-top: thin #333 solid;
+    border-bottom: thin #333 solid;
+
+    .order-date {
+
+    }
+
+    .order-detail {
+      display: none;
+    }
+    .order-detail.expand {
+      display: block;
+    }
+
+  }
+
+}
+
+span.price::before {
+  content: '$';
+}

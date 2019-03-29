@@ -128,13 +128,36 @@
         </div>
       <!-- Change Password Modal End -->
 
-    <!-- Testing Content Begin-->
-      <section class="main">
-        <div class="product" id="p-1">.product #p-1</div>
-        <div class="product" id="p-2">.product #p-2</div>
-        <div class="product" id="p-3">.product #p-3</div>
-      </section>
-    <!-- Testing Content End-->
+      <!-- Shopping Cart Modal -->
+      <div class="modal fade" id="shopping-cart-modal" tabindex="-1" role="dialog" aria-labelledby="shoppingCartModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Shopping Cart</h4>
+                <button type="button" class="close close-clear" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="shopping-cart-form" class="form-group">
+                  <div class="cart-contents">
+                    <!-- Shopping Cart content goes here -->
+                  </div>
+                  <button type="button" class="btn btn-secondary close-clear" data-dismiss="modal">Close</button>
+                  <button id="checkout-button" type="submit" class="btn btn-primary">Checkout</button>
+              </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      <!-- end Shopping Cart -->
+
+      <main class="main">
+
+      </main>
 
     </body>
 </html>

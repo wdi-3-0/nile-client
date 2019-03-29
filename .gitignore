@@ -4,6 +4,7 @@ vendor.js
 specs.js
 application.js
 _SpecRunner.html
+.env
 
 # Created by https://www.gitignore.io/api/osx,linux
 

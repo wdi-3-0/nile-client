@@ -1,5 +1,7 @@
 @import '~bootstrap/scss/bootstrap';
 @import 'products.scss';
+@import 'history.scss';
+@import 'cart.scss';
 
 .main {
   margin-top: 30px;
@@ -13,13 +15,6 @@
     width: 30%;
   }
 }
-
-// .product {
-//   background: grey;
-//   height: 300px;
-//   margin: 15px auto;
-//   width: 300px;
-// }
 
 #nav-dropdown {
   height: 100%;
