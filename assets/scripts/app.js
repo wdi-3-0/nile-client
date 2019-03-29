@@ -12,4 +12,5 @@ const products = require('./products')
 $(() => {
   products.loadProducts()
   authEvents.addHandlers()
+  // $('#nav-sign-out-button').hide()
 })
