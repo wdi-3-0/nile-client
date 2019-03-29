@@ -34,9 +34,23 @@ const changePasswordFailure = () => {
   toast.success(store.user.email + ', there was a problem updating your password, please try again.')
 }
 
+// Reset form fields upon sign out. Then hide signed-in auth events.
+const signOutSuccess = () => {
+  $(`form`).trigger(`reset`)
+  // Display success message.
+  toast.success('Thanks for visiting ' + store.user.email + ', you have successfully been signed out.')
+}
+
+// Display failure message.
+const signOutFailure = () => {
+  toast.success('There seems to have been a problem signing out. Please try again.')
+}
+
 module.exports = {
   signInSuccess,
   authFailure,
   changePasswordSuccess,
-  changePasswordFailure
+  changePasswordFailure,
+  signOutSuccess,
+  signOutFailure
 }
