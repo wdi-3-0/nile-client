@@ -8,13 +8,13 @@
 const authEvents = require('./auth/events')
 const purchEvents = require('./purchases/events')
 const products = require('./products')
-const stripe = require('./stripe/events')
+const stripeEvents = require('./stripe/events')
 
 $(() => {
   authEvents.addHandlers()
   purchEvents.addHandlers()
   products.loadProducts()
-  stripe.addHandlers()
+  stripeEvents.addHandlers()
 
   // Set sign-in only features as hidden on page load.
   $('.secured').hide()
