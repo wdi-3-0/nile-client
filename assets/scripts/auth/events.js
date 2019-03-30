@@ -7,9 +7,6 @@ const ui = require('./ui.js')
 const onSignUp = (event) => {
   event.preventDefault()
   const formData = getFormFields(event.target)
-  console.log('this is the form data')
-  console.log(formData)
-
   api.signUp(formData)
   // Auto sign-up to sign-in.
     .then(() => { onSignUpSignIn(formData) })
@@ -26,8 +23,6 @@ const onSignUpSignIn = (formData) => {
 const onSignIn = (event) => {
   event.preventDefault()
   const formData = getFormFields(event.target)
-  console.log('this is the form data')
-  console.log(formData)
   api.signIn(formData)
     .then(ui.signInSuccess)
     .catch(ui.authFailure)
