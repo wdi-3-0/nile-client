@@ -15,6 +15,8 @@ const cartFailure = (responseData) => {
 }
 
 const addItemSuccess = (responseData) => {
+  const addedProductId = responseData.cart.items.slice(-1)[0]
+  $('.btn-target-' + addedProductId).hide()
   toast.success('Item added to cart')
 }
 
@@ -22,8 +24,9 @@ const addItemFailure = (responseData) => {
   toast.failure('Unable to add item')
 }
 
-const removeItemSuccess = (responseData) => {
+const removeItemSuccess = (responseData, productId) => {
   toast.success('Item removed from cart')
+  $('.btn-target-' + productId).show()
   $('.modal').modal('hide')
   $('#nav-cart-button').trigger('click')
 }
