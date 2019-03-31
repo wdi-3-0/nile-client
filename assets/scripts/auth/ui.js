@@ -9,6 +9,8 @@ const signInSuccess = (responseData) => {
   // Display success message, unhide secured items and hide unsecured items.
   toast.success('Sign in successful. Welcome to Nile, ' + store.user.email)
   authRefresh()
+  // update available products
+  $('#nav-refresh-button').trigger('click')
 }
 
 // Used for both sign up and sign in failure. display message, then reset form fields.
@@ -38,6 +40,7 @@ const signOutSuccess = () => {
   hideModal()
   // Display success message, unhide unsecured items and hide secured items.
   toast.success('You have successfully been signed out.')
+  $('#nav-refresh-button').trigger('click')
   authRefresh()
 }
 
