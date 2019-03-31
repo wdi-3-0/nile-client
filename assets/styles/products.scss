@@ -1,4 +1,9 @@
 
+.main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
 .product-wrapper {
   margin: 15px auto;
@@ -13,8 +18,10 @@
   padding-bottom: 5px;
 
   .thumbnail {
-
+    overflow: hidden;
     margin: 0 auto;
+    max-width: 300px;
+    max-height: 300px;
   }
 
   .caption {
@@ -29,12 +36,19 @@
   }
 
   .price {
-    font-size: 14px;
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: 600;
     color: #000;
     text-align: right;
     .item-price::before {
       content: '$';
+    }
+  }
+
+  .add-item {
+    text-align: center;
+    button {
+      margin: 1px auto;
     }
   }
 
