@@ -59,8 +59,14 @@ const removeItem = (productId) => {
 }
 
 // process payment, etc
-const checkOut = (data) => {
-  // TODO: process payment, etc
+const checkOut = () => {
+  return $.ajax({
+    url: `${config.apiUrl}/checkout`,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
 }
 
 module.exports = {
