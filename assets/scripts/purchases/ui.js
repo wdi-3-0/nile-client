@@ -17,15 +17,50 @@ const cartFailure = (responseData) => {
 
 const addItemSuccess = (responseData) => {
   toast.success('Item added to cart')
+  updateAvailableProducts(responseData)
 }
 
 const addItemFailure = (responseData) => {
   toast.failure('Unable to add item')
 }
 
+// show which products have already been added to cart
+const updateAvailableProducts = (responseData) => {
+  console.log('Refreshing products from cart:', responseData)
+  // check if cart exists and contains items
+  if ((responseData.cart && responseData.cart.items)) {
+    let currentItems
+
+    if (responseData.cart.items[0]._id) {
+      currentItems = responseData.cart.items.map(item => item._id)
+    } else {
+      currentItems = responseData.cart.items
+    }
+
+    // for each product, if in cart, add class 'added'
+    $('.product').each(function () {
+      const productId = $(this).data('id')
+      if (currentItems.includes(productId)) {
+        $(this).addClass('added')
+      } else {
+        $(this).removeClass('added')
+      }
+    })
+  } else {
+    // otherwise clear all products
+    console.log('No items in cart')
+    $('.product').removeClass('added')
+  }
+}
+
+const refreshFailure = (responseData) => {
+  toast.failure('Unable to refresh products')
+}
+
 const removeItemSuccess = (responseData) => {
   toast.success('Item removed from cart')
   $('.modal').modal('hide')
+  $('#nav-refresh-button').trigger('click')
   $('#nav-cart-button').trigger('click')
 }
 
@@ -46,6 +81,7 @@ const historyFailure = (responseData) => {
 const checkoutSuccess = (responseData) => {
   // TODO: process order
   toast.success('Checkout successful!')
+  $('#nav-refresh-button').trigger('click')
 }
 
 const checkoutFailure = (responseData) => {
@@ -57,6 +93,8 @@ module.exports = {
   cartFailure,
   addItemSuccess,
   addItemFailure,
+  updateAvailableProducts,
+  refreshFailure,
   removeItemSuccess,
   removeItemFailure,
   historySuccess,
