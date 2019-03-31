@@ -1,10 +1,8 @@
 'use strict'
 
 // Common utility functions
-//
-// Currently utilize Bootstrap Alert styles
 
-const store = require('../store')
+const store = require('./store')
 
 // returns boolean value for whether token exists
 const isAuthenticated = () => {
