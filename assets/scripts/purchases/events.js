@@ -6,8 +6,10 @@ const ui = require('./ui')
 
 const addHandlers = () => {
   $('#nav-cart-button').on('click', showCart)
+  $('#nav-orders-button').on('click', showHistory)
   $('.main').on('click', '.add-item button', onClickAdd)
   $('#shopping-cart-modal').on('click', '.remove-item', removeFromCart)
+  $('#shopping-cart-form').on('submit', onCheckout)
 }
 
 // runs when user clicks 'Add to Cart' button, whether
@@ -29,24 +31,33 @@ const showCart = () => {
     .catch(ui.cartFailure)
 }
 
+const showHistory = () => {
+  api.getPurchaseHistory()
+    .then(ui.historySuccess)
+    .catch(ui.historyFailure)
+}
+
 const addToCart = (event) => {
   const productId = $(event.target).data('id')
 
   // check if user has cart
-  if (!api.hasCart()) {
-    // if not, create cart
-    api.createCart()
-      .then(() => {
-        api.addItem(productId)
-          .then(ui.addItemSuccess)
-          .catch(ui.addItemFailure)
-      })
-      .catch(ui.addItemFailure)
-  } else {
-    api.addItem(productId)
-      .then(ui.addItemSuccess)
-      .catch(ui.addItemFailure)
-  }
+  api.getCart()
+    .then((responseData) => {
+      if (responseData.cart) {
+        addItem(productId)
+      } else {
+        api.createCart()
+          .then(() => {
+            addItem(productId)
+          }).catch(ui.addItemFailure)
+      }
+    }).catch(ui.addItemFailure)
+}
+
+const addItem = (productId) => {
+  api.addItem(productId)
+    .then(ui.addItemSuccess)
+    .catch(ui.addItemFailure)
 }
 
 const removeFromCart = (event) => {
@@ -55,6 +66,13 @@ const removeFromCart = (event) => {
   api.removeItem(productId)
     .then(ui.removeItemSuccess)
     .catch(ui.removeItemFailure)
+}
+
+const onCheckout = (event) => {
+  event.preventDefault()
+
+  console.log('Checkout submitted')
+  // TODO: process order
 }
 
 module.exports = {
