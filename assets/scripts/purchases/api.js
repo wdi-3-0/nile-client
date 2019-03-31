@@ -3,6 +3,7 @@
 const config = require('../config')
 const store = require('../store')
 
+// get user's past purchases
 const getPurchaseHistory = () => {
   return $.ajax({
     url: config.apiUrl + '/purchases',
@@ -13,6 +14,7 @@ const getPurchaseHistory = () => {
   })
 }
 
+// get user's cart
 const getCart = () => {
   return $.ajax({
     url: config.apiUrl + '/cart',
@@ -23,6 +25,17 @@ const getCart = () => {
   })
 }
 
+// boolean - return true if user has cart
+const hasCart = () => {
+  const responseData = getCart()
+  if (responseData.cart) {
+    return true
+  } else {
+    return false
+  }
+}
+
+// create new cart
 const createCart = () => {
   return $.ajax({
     url: config.apiUrl + '/cart',
@@ -33,6 +46,7 @@ const createCart = () => {
   })
 }
 
+// add item to cart
 const addItem = (productId) => {
   return $.ajax({
     url: `${config.apiUrl}/add-item/${productId}`,
@@ -43,6 +57,7 @@ const addItem = (productId) => {
   })
 }
 
+// remove item from cart
 const removeItem = (productId) => {
   return $.ajax({
     url: `${config.apiUrl}/remove-item/${productId}`,
@@ -56,6 +71,7 @@ const removeItem = (productId) => {
 module.exports = {
   getPurchaseHistory,
   getCart,
+  hasCart,
   createCart,
   addItem,
   removeItem
