@@ -7,6 +7,7 @@ const ui = require('./ui')
 const addHandlers = () => {
   $('#nav-cart-button').on('click', showCart)
   $('#nav-orders-button').on('click', showHistory)
+  $('#nav-refresh-button').on('click', refreshProducts)
   $('.main').on('click', '.add-item button', onClickAdd)
   $('#shopping-cart-modal').on('click', '.remove-item', removeFromCart)
   $('#shopping-cart-form').on('submit', onCheckout)
@@ -70,14 +71,23 @@ const removeFromCart = (event) => {
 
 const onCheckout = (event) => {
   event.preventDefault()
-
   console.log('Checkout submitted')
-  // TODO: process order
+  api.checkOut()
+    .then(ui.checkoutSuccess)
+    .catch(ui.checkoutFailure)
+}
+
+const refreshProducts = () => {
+  api.getCart()
+    .then(ui.updateAvailableProducts)
+    .catch(ui.refreshFailure)
 }
 
 module.exports = {
   addHandlers,
   showCart,
   addToCart,
-  removeFromCart
+  removeFromCart,
+  onCheckout,
+  refreshProducts
 }
