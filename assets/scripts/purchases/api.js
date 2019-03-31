@@ -25,16 +25,6 @@ const getCart = () => {
   })
 }
 
-// boolean - return true if user has cart
-const hasCart = () => {
-  const responseData = getCart()
-  if (responseData.cart) {
-    return true
-  } else {
-    return false
-  }
-}
-
 // create new cart
 const createCart = () => {
   return $.ajax({
@@ -68,11 +58,16 @@ const removeItem = (productId) => {
   })
 }
 
+// process payment, etc
+const checkOut = (data) => {
+  // TODO: process payment, etc
+}
+
 module.exports = {
   getPurchaseHistory,
   getCart,
-  hasCart,
   createCart,
   addItem,
-  removeItem
+  removeItem,
+  checkOut
 }
