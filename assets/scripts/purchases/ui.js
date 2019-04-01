@@ -20,7 +20,7 @@ const cartFailure = (responseData) => {
 
 const addItemSuccess = (responseData) => {
   toast.success('Item added to cart')
-  $('#nav-refresh-button').trigger('click')
+  $('#logo-bar').trigger('click')
 }
 
 const addItemFailure = (responseData) => {
@@ -30,7 +30,7 @@ const addItemFailure = (responseData) => {
 const removeItemSuccess = (responseData) => {
   toast.success('Item removed from cart')
   $('.modal').modal('hide')
-  $('#nav-refresh-button').trigger('click')
+  $('#logo-bar').trigger('click')
   $('#nav-cart-button').trigger('click')
 }
 
@@ -40,7 +40,6 @@ const removeItemFailure = (responseData) => {
 
 // show which products have already been added to cart
 const refreshProductsSuccess = (responseData) => {
-  console.log('Refreshing products from cart:', responseData)
   // check if cart exists and contains items
   if ((responseData.cart && responseData.cart.items && responseData.cart.items.length > 0)) {
     // if items in cart, show checkout button
@@ -63,7 +62,6 @@ const refreshProductsSuccess = (responseData) => {
     })
   } else {
     // otherwise clear all products
-    console.log('No items in cart')
     $('.product').removeClass('added')
     // if cart is empty, hide checkout button
     $('#checkout-button').hide()
@@ -82,6 +80,12 @@ const historySuccess = (responseData) => {
 
   const historyHtml = historyTmpl({ purchases: purchases })
   $('#orders-modal .order-content').html(historyHtml)
+
+  $('section.order .order-date').each(function () {
+    const dt = $(this).data('date')
+    const date = new Date(dt)
+    $(this).text(utils.formatDate(date))
+  })
 
   $('#orders-modal').modal('show')
 }
