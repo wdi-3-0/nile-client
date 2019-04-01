@@ -3,8 +3,14 @@
 const toast = require('../templates/toast')
 const shoppingCartTmpl = require('../templates/cart.hbs')
 const historyTmpl = require('../templates/history.hbs')
+const utils = require('../utils')
 
 const cartSuccess = (responseData) => {
+  if (responseData.cart && responseData.cart.items.length > 0) {
+    utils.calculateOrderTotal(responseData.cart)
+  } else if (responseData.cart.items.length === 0) {
+    responseData.cart.totalCost = 0
+  }
   const cartHtml = shoppingCartTmpl({ cart: responseData.cart })
   $('#shopping-cart-modal .cart-contents').html(cartHtml)
   $('#shopping-cart-modal').modal('show')
@@ -16,7 +22,7 @@ const cartFailure = (responseData) => {
 
 const addItemSuccess = (responseData) => {
   toast.success('Item added to cart')
-  $('#nav-refresh-button').trigger('click')
+  $('#logo-bar').trigger('click')
 }
 
 const addItemFailure = (responseData) => {
@@ -26,7 +32,7 @@ const addItemFailure = (responseData) => {
 const removeItemSuccess = (responseData) => {
   toast.success('Item removed from cart')
   $('.modal').modal('hide')
-  $('#nav-refresh-button').trigger('click')
+  $('#logo-bar').trigger('click')
   $('#nav-cart-button').trigger('click')
 }
 
@@ -36,7 +42,6 @@ const removeItemFailure = (responseData) => {
 
 // show which products have already been added to cart
 const refreshProductsSuccess = (responseData) => {
-  console.log('Refreshing products from cart:', responseData)
   // check if cart exists and contains items
   if ((responseData.cart && responseData.cart.items && responseData.cart.items.length > 0)) {
     // if items in cart, show checkout button
@@ -59,7 +64,6 @@ const refreshProductsSuccess = (responseData) => {
     })
   } else {
     // otherwise clear all products
-    console.log('No items in cart')
     $('.product').removeClass('added')
     // if cart is empty, hide checkout button
     $('#checkout-button').hide()
@@ -73,13 +77,18 @@ const refreshProductsFailure = (responseData) => {
 const historySuccess = (responseData) => {
   const purchases = responseData.purchases
   purchases.forEach(purchase => {
-    const prices = purchase.items.map(item => item.price)
-    const total = prices.reduce((acc, val) => acc + val)
-    purchase.totalCost = total
+    utils.calculateOrderTotal(purchase)
   })
 
   const historyHtml = historyTmpl({ purchases: purchases })
   $('#orders-modal .order-content').html(historyHtml)
+
+  $('section.order .order-date').each(function () {
+    const dt = $(this).data('date')
+    const date = new Date(dt)
+    $(this).text(utils.formatDate(date))
+  })
+
   $('#orders-modal').modal('show')
 }
 

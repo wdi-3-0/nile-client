@@ -11,7 +11,7 @@ const signInSuccess = (responseData) => {
   toast.success('Sign in successful. Welcome to Nile, ' + store.user.email)
 
   // does the same thing as below
-  $('#nav-refresh-button').trigger('click')
+  $('#logo-bar').trigger('click')
   authRefresh()
 
   // Run the getCart api request and add the user's cart to the store file. Then
@@ -61,7 +61,7 @@ const signOutSuccess = () => {
   hideModal()
   // Display success message, unhide unsecured items and hide secured items.
   toast.success('You have successfully been signed out.')
-  $('#nav-refresh-button').trigger('click')
+  $('#logo-bar').trigger('click')
   authRefresh()
 }
 

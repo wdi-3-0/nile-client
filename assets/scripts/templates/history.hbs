@@ -1,13 +1,12 @@
 <div class="purchase-history">
 {{#each purchases as |purchase|}}
   <section class="order" data-id="{{purchase._id}}">
-    Order Date: <span class="order-date">{{purchase.updatedAt}}</span>
-    <button class="btn btn-outline-default view-details">Details</button>
+    Order Date: <span class="order-date" data-date="{{purchase.updatedAt}}"></span>
     <div class="order-detail">
       <header>Items</header>
       <ol class="items">
       {{#each purchase.items as |item|}}
-        <li class="item">{{item.name}}
+        <li class="item">{{item.name}} --
           <span class="price">{{item.price}}</span>
         </li>
       {{/each}}

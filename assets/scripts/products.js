@@ -2,12 +2,15 @@
 
 const config = require('./config')
 const productTmpl = require('./templates/product.hbs')
+const toast = require('./templates/toast')
 
 const loadProducts = () => {
   $.ajax({
     url: config.apiUrl + '/products'
   }).then(showProducts)
-    .catch(console.log)
+    .catch(() => {
+      toast.failure('Unable to load products')
+    })
 }
 
 const showProducts = (responseData) => {
@@ -15,12 +18,7 @@ const showProducts = (responseData) => {
   $('.main').html(productsHtml)
 }
 
-const productsError = (err) => {
-  console.log(err)
-}
-
 module.exports = {
   loadProducts,
-  showProducts,
-  productsError
+  showProducts
 }
