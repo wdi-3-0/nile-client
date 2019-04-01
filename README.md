@@ -20,7 +20,7 @@ Github pages. The API is built using Express.js and MongoDb.
 ### Future Plans
 
 In future versions, we would like to add a search function in order to search
-for specific products.  We would also like to add categorization for products.
+for specific products as well as categorization for products.
 
 ### Planning
 
