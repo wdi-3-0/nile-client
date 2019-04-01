@@ -8,9 +8,11 @@ const utils = require('../utils')
 const cartSuccess = (responseData) => {
   if (responseData.cart && responseData.cart.items.length > 0) {
     utils.calculateOrderTotal(responseData.cart)
-    const cartHtml = shoppingCartTmpl({ cart: responseData.cart })
-    $('#shopping-cart-modal .cart-contents').html(cartHtml)
+  } else if (responseData.cart.items.length === 0) {
+    responseData.cart.totalCost = 0
   }
+  const cartHtml = shoppingCartTmpl({ cart: responseData.cart })
+  $('#shopping-cart-modal .cart-contents').html(cartHtml)
   $('#shopping-cart-modal').modal('show')
 }
 
