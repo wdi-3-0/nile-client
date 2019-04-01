@@ -38,7 +38,7 @@ const removeItemFailure = (responseData) => {
 const refreshProductsSuccess = (responseData) => {
   console.log('Refreshing products from cart:', responseData)
   // check if cart exists and contains items
-  if ((responseData.cart && responseData.cart.items)) {
+  if ((responseData.cart && responseData.cart.items && responseData.cart.items.length > 0)) {
     let currentItems
 
     if (responseData.cart.items[0]._id) {
