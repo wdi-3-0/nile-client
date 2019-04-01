@@ -1,5 +1,6 @@
 'use strict'
 
+const toast = require('../templates/toast')
 const api = require('./api')
 const cartApi = require('../purchases/api')
 
@@ -37,6 +38,7 @@ const handler = StripeCheckout.configure({
           .then(() => {
             $('#nav-refresh-button').click()
             $('#shopping-cart-modal').modal('hide')
+            toast.success('Checkout complete, thank you for your business!')
           })
           .catch(console.error)
       })
