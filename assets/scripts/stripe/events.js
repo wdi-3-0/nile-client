@@ -33,6 +33,7 @@ const handler = StripeCheckout.configure({
         }
 
         api.createCharge(stripeData)
+          .then(cartApi.checkOut)
           .catch(console.error)
       })
   }
