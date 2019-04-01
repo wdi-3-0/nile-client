@@ -21,9 +21,6 @@ const handler = StripeCheckout.configure({
   token: function (token) {
     cartApi.getCart()
       .then(responseData => {
-        // const prices = responseData.cart.items.map(item => item.price)
-        // const reducer = (acc, curr) => acc + curr
-        // const total = prices.reduce(reducer) * 100
         return getCartTotal(responseData)
       })
 
