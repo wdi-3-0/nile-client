@@ -33,6 +33,11 @@ const handler = StripeCheckout.configure({
         }
 
         api.createCharge(stripeData)
+          .then(cartApi.checkOut)
+          .then(() => {
+            $('#nav-refresh-button').click()
+            $('#shopping-cart-modal').modal('hide')
+          })
           .catch(console.error)
       })
   }
