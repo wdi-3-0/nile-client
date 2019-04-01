@@ -2,6 +2,7 @@
 
 .shopping-cart {
   border: thin solid gray;
+  padding: 2px;
 
   .item {
     display: flex;
@@ -15,13 +16,21 @@
     .item-cost::before {
       content: '$';
     }
-
-    button {
-
-    }
   }
 
-  .total-cost::before {
-    content: '$';
+  button {
+    margin: 2px;
+  }
+
+  .total {
+    line-height: 1.5rem;
+    text-align: right;
+    margin: 2px 15px 2px 0;
+    font-size: 16px;
+    font-weight: 600;
+
+    .total-cost::before {
+      content: '$';
+    }
   }
 }
