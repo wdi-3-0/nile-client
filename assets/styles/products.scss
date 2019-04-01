@@ -1,4 +1,9 @@
 
+.main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
 .product-wrapper {
   margin: 15px auto;
@@ -13,8 +18,11 @@
   padding-bottom: 5px;
 
   .thumbnail {
-
+    overflow: hidden;
     margin: 0 auto;
+    max-width: 300px;
+    max-height: 300px;
+    opacity: 1;
   }
 
   .caption {
@@ -29,8 +37,8 @@
   }
 
   .price {
-    font-size: 14px;
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: 600;
     color: #000;
     text-align: right;
     .item-price::before {
@@ -38,5 +46,24 @@
     }
   }
 
+  .add-item {
+    text-align: center;
+    button {
+      margin: 1px auto;
+    }
+  }
 
+  &.added {
+    border: thin inset black;
+
+    .thumbnail {
+      opacity: 0.4;
+    }
+    .caption {
+      background-color: #999;
+    }
+    .add-item button {
+      visibility: hidden;
+    }
+  }
 }

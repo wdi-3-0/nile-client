@@ -3,6 +3,7 @@
 const config = require('../config')
 const store = require('../store')
 
+// get user's past purchases
 const getPurchaseHistory = () => {
   return $.ajax({
     url: config.apiUrl + '/purchases',
@@ -13,6 +14,7 @@ const getPurchaseHistory = () => {
   })
 }
 
+// get user's cart
 const getCart = () => {
   return $.ajax({
     url: config.apiUrl + '/cart',
@@ -23,6 +25,7 @@ const getCart = () => {
   })
 }
 
+// create new cart
 const createCart = () => {
   return $.ajax({
     url: config.apiUrl + '/cart',
@@ -33,6 +36,7 @@ const createCart = () => {
   })
 }
 
+// add item to cart
 const addItem = (productId) => {
   return $.ajax({
     url: `${config.apiUrl}/add-item/${productId}`,
@@ -43,10 +47,22 @@ const addItem = (productId) => {
   })
 }
 
+// remove item from cart
 const removeItem = (productId) => {
   return $.ajax({
     url: `${config.apiUrl}/remove-item/${productId}`,
     method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+// process payment, etc
+const checkOut = () => {
+  return $.ajax({
+    url: `${config.apiUrl}/checkout`,
+    method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
     }
@@ -58,5 +74,6 @@ module.exports = {
   getCart,
   createCart,
   addItem,
-  removeItem
+  removeItem,
+  checkOut
 }
