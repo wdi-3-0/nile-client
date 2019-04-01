@@ -39,8 +39,9 @@ const refreshProductsSuccess = (responseData) => {
   console.log('Refreshing products from cart:', responseData)
   // check if cart exists and contains items
   if ((responseData.cart && responseData.cart.items && responseData.cart.items.length > 0)) {
+    // if items in cart, show checkout button
+    $('#checkout-button').show()
     let currentItems
-
     if (responseData.cart.items[0]._id) {
       currentItems = responseData.cart.items.map(item => item._id)
     } else {
@@ -60,6 +61,8 @@ const refreshProductsSuccess = (responseData) => {
     // otherwise clear all products
     console.log('No items in cart')
     $('.product').removeClass('added')
+    // if cart is empty, hide checkout button
+    $('#checkout-button').hide()
   }
 }
 

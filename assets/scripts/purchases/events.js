@@ -12,6 +12,8 @@ const addHandlers = () => {
   $('#nav-refresh-button').on('click', refreshProducts)
   $('#shopping-cart-modal').on('click', '.remove-item', removeFromCart)
   $('#order-content').on('click', 'button.view-details', viewHistoryDetails)
+  // default is to hide checkout button.  Button will show once one item is added.
+  $('#checkout-button').hide()
 }
 
 // Display shopping cart
