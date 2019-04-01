@@ -13,6 +13,12 @@
 
     .order-detail {
       display: block;
+      margin: 0 1em;
+    }
+
+    .total {
+      text-align: right;
+      margin-right: 1em;
     }
 
 
@@ -22,4 +28,9 @@
 
 span.price::before {
   content: '$';
+}
+
+button.close-clear {
+  text-align: center;
+  margin: 2px auto;
 }
