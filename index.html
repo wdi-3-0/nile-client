@@ -17,7 +17,7 @@
 
     <!-- Nav Begin -->
       <nav class="navbar navbar-light bg-light sticky-top p-0">
-          <button class="nav-item btn-success">
+          <button id="logo-bar" class="nav-item">
             <img src="public/nile.png" alt="Logo" class="logo"> Nile
           </button>
           <div class="dropdown nav-item">
@@ -97,7 +97,7 @@
                     <input type="password" name="credentials[password_confirmation]" class="form-control" placeholder="Enter password" id="signUpInputPasswordConfirm">
                 </div>
                 <button type="button" class="btn btn-secondary close-clear" data-dismiss="modal">Close</button>
-                <button id="sign-up-button" type="submit" class="btn btn-primary">Sign Up</button>
+                <button id="sign-up-button" type="submit" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#sign-up-modal">Sign Up</button>
             </form>
             </div>
           </div>
