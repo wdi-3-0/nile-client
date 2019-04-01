@@ -9,9 +9,8 @@ const addHandlers = () => {
   $('#nav-cart-button').on('click', showCart)
   $('.main').on('click', '.add-item button', addToCart)
   $('#nav-orders-button').on('click', showHistory)
-  $('#nav-refresh-button').on('click', refreshProducts)
+  $('#logo-bar').on('click', refreshProducts)
   $('#shopping-cart-modal').on('click', '.remove-item', removeFromCart)
-  $('#order-content').on('click', 'button.view-details', viewHistoryDetails)
   // default is to hide checkout button.  Button will show once one item is added.
   $('#checkout-button').hide()
 }
@@ -44,7 +43,6 @@ const addToCart = (event) => {
 
 // refresh available products to prevent double order
 const refreshProducts = () => {
-  console.log('Refreshing products')
   if (store.user) {
     api.getCart()
       .then(ui.refreshProductsSuccess)
@@ -63,16 +61,10 @@ const removeFromCart = (event) => {
     .catch(ui.removeItemFailure)
 }
 
-// expand history details
-const viewHistoryDetails = (event) => {
-  $('.order-detail').toggleClass('expand')
-}
-
 module.exports = {
   addHandlers,
   showCart,
   addToCart,
   refreshProducts,
-  removeFromCart,
-  viewHistoryDetails
+  removeFromCart
 }
