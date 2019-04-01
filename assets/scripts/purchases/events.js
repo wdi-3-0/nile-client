@@ -2,6 +2,7 @@
 
 const api = require('./api')
 const ui = require('./ui')
+const store = require('../store')
 
 const addHandlers = () => {
   $('#nav-cart-button').on('click', showCart)
@@ -16,10 +17,14 @@ const showCart = () => {
 }
 
 const addToCart = (event) => {
-  const productId = $(event.target).data('id')
-  api.addItem(productId)
-    .then(ui.addItemSuccess)
-    .catch(ui.addItemFailure)
+  if (store.user) {
+    const productId = $(event.target).data('id')
+    api.addItem(productId)
+      .then(ui.addItemSuccess)
+      .catch(ui.addItemFailure)
+  } else {
+    $('#nav-sign-in-button').click()
+  }
 }
 
 const removeFromCart = (event) => {
