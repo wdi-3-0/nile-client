@@ -36,7 +36,7 @@ const handler = StripeCheckout.configure({
         api.createCharge(stripeData)
           .then(cartApi.checkOut)
           .then(() => {
-            $('#nav-refresh-button').click()
+            $('#logo-bar').click()
             $('#shopping-cart-modal').modal('hide')
             toast.success('Checkout complete, thank you for your business!')
           })
