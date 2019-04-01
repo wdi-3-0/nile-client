@@ -22,8 +22,16 @@ const calculateOrderTotal = (order, orderProperty = 'totalCost') => {
   return total
 }
 
+const formatDate = (date) => {
+  const day = date.getDate()
+  const month = date.getMonth()
+  const year = date.getFullYear()
+  return `${month}/${day}/${year}`
+}
+
 module.exports = {
   isAuthenticated,
   getCurrentUserId,
-  calculateOrderTotal
+  calculateOrderTotal,
+  formatDate
 }
