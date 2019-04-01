@@ -9,6 +9,9 @@ const signInSuccess = (responseData) => {
   hideModal()
   // Display success message, unhide secured items and hide unsecured items.
   toast.success('Sign in successful. Welcome to Nile, ' + store.user.email)
+
+  // does the same thing as below
+  $('#nav-refresh-button').trigger('click')
   authRefresh()
 
   // Run the getCart api request and add the user's cart to the store file. Then
@@ -17,12 +20,17 @@ const signInSuccess = (responseData) => {
   // from adding the same product into the cart.
   purchaseApi.getCart()
     .then((cartResponse) => {
-      store.cart = cartResponse.cart
-      const openCartItems = store.cart.items.map(item => item._id)
-      for (let i = 0; i < openCartItems.length; i++) {
-        const eachItem = i
-        $('.btn-target-' + openCartItems[eachItem]).hide()
-      }
+      // store.cart = cartResponse.cart
+      // const openCartItems = store.cart.items.map(item => item._id)
+      const openCartItems = cartResponse.cart.items.map(item => item._id)
+      $('.product').each(function () {
+        const productId = $(this).data('id')
+        if (openCartItems.includes(productId)) {
+          $(this).addClass('added')
+        } else {
+          $(this).removeClass('added')
+        }
+      })
     })
 }
 
@@ -53,6 +61,7 @@ const signOutSuccess = () => {
   hideModal()
   // Display success message, unhide unsecured items and hide secured items.
   toast.success('You have successfully been signed out.')
+  $('#nav-refresh-button').trigger('click')
   authRefresh()
 }
 
@@ -67,9 +76,11 @@ const authRefresh = () => {
   if (store.user && store.user.token) {
     $('.unsecured').hide()
     $('.secured').show()
+    $('#logo-bar').addClass('logged-in')
   } else {
     $('.unsecured').show()
     $('.secured').hide()
+    $('#logo-bar').removeClass('logged-in')
   }
 }
 
