@@ -7,13 +7,12 @@ const addHandlers = () => {
   $('#checkout-button').on('click', openHandler)
 }
 
-// const getCartTotal = () => {
-//   cartApi.getCart()
-//     .then(responseData => {
-//       console.log(responseData)
-//       return responseData
-//     })
-// }
+const getCartTotal = (responseData) => {
+  const prices = responseData.cart.items.map(item => item.price)
+  const reducer = (acc, curr) => acc + curr
+  const total = prices.reduce(reducer) * 100
+  return total
+}
 
 const handler = StripeCheckout.configure({
   key: 'pk_test_IlHFjvgJoAsnL6ec5Nnbgxew005EW6mYqU',
@@ -22,10 +21,13 @@ const handler = StripeCheckout.configure({
   token: function (token) {
     cartApi.getCart()
       .then(responseData => {
-        const prices = responseData.cart.items.map(item => item.price)
-        const reducer = (acc, curr) => acc + curr
-        const total = prices.reduce(reducer) * 100
+        // const prices = responseData.cart.items.map(item => item.price)
+        // const reducer = (acc, curr) => acc + curr
+        // const total = prices.reduce(reducer) * 100
+        return getCartTotal(responseData)
+      })
 
+      .then((total) => {
         const stripeData = {
           token: {
             tokenId: token.id,
@@ -44,11 +46,9 @@ const openHandler = event => {
 
   cartApi.getCart()
     .then(responseData => {
-      const prices = responseData.cart.items.map(item => item.price)
-      const reducer = (acc, curr) => acc + curr
-      const total = prices.reduce(reducer) * 100
-      console.log(total)
-
+      return getCartTotal(responseData)
+    })
+    .then((total) => {
       handler.open({
         name: 'Nile',
         description: '2 widgets',
