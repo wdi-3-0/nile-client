@@ -1,6 +1,7 @@
 'use strict'
 const store = require('../store')
 const toast = require('../templates/toast')
+const purchaseApi = require('../purchases/api')
 
 // Save the user info to store, reset form fields, and hide modal.
 const signInSuccess = (responseData) => {
@@ -9,6 +10,20 @@ const signInSuccess = (responseData) => {
   // Display success message, unhide secured items and hide unsecured items.
   toast.success('Sign in successful. Welcome to Nile, ' + store.user.email)
   authRefresh()
+
+  // Run the getCart api request and add the user's cart to the store file. Then
+  // loop through each of the items in the cart using the item ID. For each
+  // item ID in the cart, disable the 'Add to Cart' button, to prevent the user
+  // from adding the same product into the cart.
+  purchaseApi.getCart()
+    .then((cartResponse) => {
+      store.cart = cartResponse.cart
+      const openCartItems = store.cart.items.map(item => item._id)
+      for (let i = 0; i < openCartItems.length; i++) {
+        const eachItem = i
+        $('.btn-target-' + openCartItems[eachItem]).hide()
+      }
+    })
 }
 
 // Used for both sign up and sign in failure. display message, then reset form fields.

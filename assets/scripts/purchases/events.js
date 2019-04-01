@@ -26,7 +26,7 @@ const removeFromCart = (event) => {
   event.preventDefault()
   const productId = $(event.target).data('id')
   api.removeItem(productId)
-    .then(ui.removeItemSuccess)
+    .then((responseData) => ui.removeItemSuccess(responseData, productId))
     .catch(ui.removeItemFailure)
 }
 
