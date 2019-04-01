@@ -3,10 +3,14 @@
 const toast = require('../templates/toast')
 const shoppingCartTmpl = require('../templates/cart.hbs')
 const historyTmpl = require('../templates/history.hbs')
+const utils = require('../utils')
 
 const cartSuccess = (responseData) => {
-  const cartHtml = shoppingCartTmpl({ cart: responseData.cart })
-  $('#shopping-cart-modal .cart-contents').html(cartHtml)
+  if (responseData.cart && responseData.cart.items.length > 0) {
+    utils.calculateOrderTotal(responseData.cart)
+    const cartHtml = shoppingCartTmpl({ cart: responseData.cart })
+    $('#shopping-cart-modal .cart-contents').html(cartHtml)
+  }
   $('#shopping-cart-modal').modal('show')
 }
 
@@ -73,13 +77,12 @@ const refreshProductsFailure = (responseData) => {
 const historySuccess = (responseData) => {
   const purchases = responseData.purchases
   purchases.forEach(purchase => {
-    const prices = purchase.items.map(item => item.price)
-    const total = prices.reduce((acc, val) => acc + val)
-    purchase.totalCost = total
+    utils.calculateOrderTotal(purchase)
   })
 
   const historyHtml = historyTmpl({ purchases: purchases })
   $('#orders-modal .order-content').html(historyHtml)
+
   $('#orders-modal').modal('show')
 }
 
