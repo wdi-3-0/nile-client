@@ -29,9 +29,22 @@ const formatDate = (date) => {
   return `${month}/${day}/${year}`
 }
 
+const formatProductNames = (products) => {
+  products.forEach(product => {
+    const name = product.name
+    if (name.includes(' by ')) {
+      const parts = name.split(' by ')
+      product.title = parts[0]
+      product.author = parts[1]
+    }
+  })
+  return products
+}
+
 module.exports = {
   isAuthenticated,
   getCurrentUserId,
   calculateOrderTotal,
-  formatDate
+  formatDate,
+  formatProductNames
 }
