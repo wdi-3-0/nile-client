@@ -3,10 +3,17 @@
 @import 'history.scss';
 @import 'cart.scss';
 
+body {
+  background-image: url('public/nils-schirmer-1429446-unsplash.jpg');
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
+
 footer {
   background-color: #ccc;
-  padding-bottom: 1.5rem;
-  padding-top: 1rem;
+  padding-bottom: .75rem;
+  padding-top: .75rem;
 }
 
 .main {
@@ -18,7 +25,7 @@ footer {
 
   > .nav-item {
     height: 90%;
-    padding: 0 3em;
+    padding: 0 .5em;
   }
 }
 
@@ -35,8 +42,13 @@ footer {
 
 #logo-bar {
   cursor: default;
-  background-color: #c00;
+  background-color: #ea4e4e;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 2em;
+  font-weight: 550;
+  // text-shadow: 1px 1px 2px blue, 0 0 1em cyan, 0 0 0.2em cyan;
+
 }
 #logo-bar.logged-in {
-  background-color: #0c0;
+  background-color: #7cfc00;
 }
