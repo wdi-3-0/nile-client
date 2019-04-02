@@ -3,6 +3,12 @@
 @import 'history.scss';
 @import 'cart.scss';
 
+footer {
+  background-color: #ccc;
+  padding-bottom: 1.5rem;
+  padding-top: 1rem;
+}
+
 .main {
   margin-top: 30px;
 }
@@ -11,8 +17,8 @@
   height: 50px;
 
   > .nav-item {
-    height: 100%;
-    width: 30%;
+    height: 90%;
+    padding: 0 3em;
   }
 }
 
@@ -24,7 +30,7 @@
 .logo {
   width: 30px;
   height: 30px;
-  margin: 2px auto;
+  // margin: 2px auto;
 }
 
 #logo-bar {
