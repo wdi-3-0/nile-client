@@ -3,6 +3,7 @@
 const config = require('./config')
 const productTmpl = require('./templates/product.hbs')
 const toast = require('./templates/toast')
+const utils = require('./utils')
 
 const loadProducts = () => {
   $.ajax({
@@ -14,7 +15,9 @@ const loadProducts = () => {
 }
 
 const showProducts = (responseData) => {
-  const productsHtml = productTmpl({ products: responseData.products })
+  // const productsHtml = productTmpl({ products: responseData.products })
+  const products = utils.formatProductNames(responseData.products)
+  const productsHtml = productTmpl({ products: products })
   $('.main').html(productsHtml)
 }
 
