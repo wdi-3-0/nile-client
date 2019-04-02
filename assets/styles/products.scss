@@ -18,22 +18,35 @@
   padding-bottom: 5px;
 
   .thumbnail {
-    overflow: hidden;
+    width: 350px;
+    height: 350px;
     margin: 0 auto;
-    width: 300px;
-    height: 300px;
     opacity: 1;
+    img {
+      width: 300px;
+      height: 300px;
+    }
   }
 
   .caption {
     margin: 2px auto;
-    font-size: 18px;
     font-weight: bold;
     font-family: cursive;
-    background-color: #666;
-    border-radius: 3px;
-    color: #fff;
     text-align: center;
+
+    div {
+      border-radius: 3px;
+    }
+
+    .title {
+      background-color: #666;
+      color: #fff;
+    }
+    .author {
+      background-color: #ccc;
+      color: #000;
+
+    }
   }
 
   .price {
