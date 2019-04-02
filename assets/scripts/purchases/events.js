@@ -34,7 +34,10 @@ const addToCart = (event) => {
   if (store.user) {
     const productId = $(event.target).data('id')
     api.addItem(productId)
-      .then(ui.addItemSuccess)
+      .then(function () {
+        refreshProducts()
+        ui.addItemSuccess()
+      })
       .catch(ui.addItemFailure)
   } else {
     $('#nav-sign-in-button').click()
