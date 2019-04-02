@@ -21,8 +21,8 @@ const cartFailure = (responseData) => {
 }
 
 const addItemSuccess = (responseData) => {
-  toast.success('Item added to cart')
   $('#logo-bar').trigger('click')
+  toast.success('Item added to cart')
 }
 
 const addItemFailure = (responseData) => {

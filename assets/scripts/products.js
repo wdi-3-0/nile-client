@@ -15,7 +15,6 @@ const loadProducts = () => {
 }
 
 const showProducts = (responseData) => {
-  // const productsHtml = productTmpl({ products: responseData.products })
   const products = utils.formatProductNames(responseData.products)
   const productsHtml = productTmpl({ products: products })
   $('.main').html(productsHtml)
