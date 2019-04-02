@@ -76,18 +76,25 @@ const refreshProductsFailure = (responseData) => {
 
 const historySuccess = (responseData) => {
   const purchases = responseData.purchases
-  purchases.forEach(purchase => {
-    utils.calculateOrderTotal(purchase)
-  })
-
-  const historyHtml = historyTmpl({ purchases: purchases })
-  $('#orders-modal .order-content').html(historyHtml)
-
-  $('section.order .order-date').each(function () {
-    const dt = $(this).data('date')
-    const date = new Date(dt)
-    $(this).text(utils.formatDate(date))
-  })
+  if (purchases.length > 0) {
+    purchases.forEach(purchase => {
+      utils.calculateOrderTotal(purchase)
+    })
+    const historyHtml = historyTmpl({ purchases: purchases })
+    $('#orders-modal .order-content').html(historyHtml)
+    $('section.order .order-date').each(function () {
+      const dt = $(this).data('date')
+      const date = new Date(dt)
+      $(this).text(utils.formatDate(date))
+    })
+  } else {
+    let noHistoryMsg = '<div class="purchase-history"><h2>You don\'t have any orders yet.</h2>'
+    noHistoryMsg += '<h4>Try coming back after you have made a purchase.</h4>'
+    noHistoryMsg += '<p>That\'s how histories work - you need to have done something before you can view your history.'
+    noHistoryMsg += ' We thought that was sufficiently obvious and wouldn\'t require a whole explanatory message.'
+    noHistoryMsg += '<br>Our bad.</p></div>'
+    $('#orders-modal .order-content').html(noHistoryMsg)
+  }
 
   $('#orders-modal').modal('show')
 }
