@@ -40,7 +40,11 @@ const handler = StripeCheckout.configure({
             $('#shopping-cart-modal').modal('hide')
             toast.success('Checkout complete, thank you for your business!')
           })
-          .catch(console.error)
+          .catch(() => {
+            toast.info('Something weird happened with Stripe')
+          })
+      }).catch(() => {
+        toast.info('Something else happened')
       })
   }
 })
