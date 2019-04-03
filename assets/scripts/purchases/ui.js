@@ -88,11 +88,9 @@ const historySuccess = (responseData) => {
       $(this).text(utils.formatDate(date))
     })
   } else {
-    let noHistoryMsg = '<div class="purchase-history"><h2>You don\'t have any orders yet.</h2>'
-    noHistoryMsg += '<h4>Try coming back after you have made a purchase.</h4>'
-    noHistoryMsg += '<p>That\'s how histories work - you need to have done something before you can view your history.'
-    noHistoryMsg += ' We thought that was sufficiently obvious and wouldn\'t require a whole explanatory message.'
-    noHistoryMsg += '<br>Our bad.</p></div>'
+    let noHistoryMsg = '<div class="purchase-history"><h2>You haven\'t made any orders yet.</h2>'
+    noHistoryMsg += '<h4>Try coming back to view your history after you have made a purchase.</h4>'
+    noHistoryMsg += '</div>'
     $('#orders-modal .order-content').html(noHistoryMsg)
   }
 
